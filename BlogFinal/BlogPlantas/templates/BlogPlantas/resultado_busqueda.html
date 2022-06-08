@@ -1,0 +1,178 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+        {% if search_param != '' %}
+        <section class="section-features site-section" style="padding-bottom: 0px;">
+            <div class="container" style="margin-top: 100px;">
+                <div class="row" >
+                    <div class="col-sm-5" style="margin-bottom: 0px;">
+                        
+                        
+                        <h2>Resultados de "{{search_param}}":</h2>
+                        
+                        <ul><h3>
+                            
+                            {% if plantas %}
+                            <div style="text-decoration-line: underline;"> Plantas:</div>
+                            <div><br></div>									
+                            {% for planta in plantas %}
+                            <li>                                              
+                            <a href="{% url 'BlogPlantas:DetallePlanta' planta.id %}">
+                                <i style="color: rgb(0, 0, 0);">{{planta.nombreComun}}</i>
+                            </a> 
+                            {% if user.is_authenticated %}
+                            (
+                            <a href="{% url 'BlogPlantas:UpdatePlanta' planta.id %}">
+                                <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            |
+                            <a href="{% url 'BlogPlantas:BorrarPlanta' planta.id %}">
+                                <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            )
+                            {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            
+                            {% if problemas %}
+                            <div><br></div>	
+                            <div style="text-decoration-line: underline;"> Problemas:</div>
+                            <div><br></div>									
+                            {% for problema in problemas %}
+                            <li>                                              
+                            <a href="{% url 'BlogPlantas:DetalleProblema' problema.id %}">
+                                <i style="color: rgb(0, 0, 0);">{{problema.nombreProblema}}</i>
+                            </a> 
+                            {% if user.is_authenticated %}
+                            (
+                            <a href="{% url 'BlogPlantas:UpdateProblema' problema.id %}">
+                                <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            |
+                            <a href="{% url 'BlogPlantas:BorrarProblema' problema.id %}">
+                                <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            )
+                            {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            
+                            {% if viveros %}
+                            <div><br></div>	
+                            <div style="text-decoration-line: underline;"> Viveros:</div>
+                            <div><br></div>									
+                            {% for vivero in viveros %}
+                            <li>                                              
+                            <a href="{% url 'BlogPlantas:DetalleVivero' vivero.id %}">
+                                <i style="color: rgb(0, 0, 0);">{{vivero.nombre}}</i>
+                            </a> 
+                            {% if user.is_authenticated %}
+                            (
+                            <a href="{% url 'BlogPlantas:UpdateVivero' vivero.id %}">
+                                <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            |
+                            <a href="{% url 'BlogPlantas:BorrarVivero' vivero.id %}">
+                                <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            )
+                            {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if productos %}
+                            <div><br></div>	
+                            <div style="text-decoration-line: underline;"> Productos:</div>
+                            <div><br></div>									
+                            {% for producto in productos %}
+                            <li>                                              
+                            <a href="{% url 'BlogPlantas:DetalleProducto' producto.id %}">
+                                <i style="color: rgb(0, 0, 0);">{{producto.nombre}}</i>
+                            </a> 
+                            {% if user.is_authenticated %}
+                            (
+                            <a href="{% url 'BlogPlantas:UpdateProducto' producto.id %}">
+                                <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            |
+                            <a href="{% url 'BlogPlantas:BorrarProducto' producto.id %}">
+                                <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            )
+                            {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if posteos %}
+                            <div><br></div>	
+                            <div style="text-decoration-line: underline;"> Blog:</div>
+                            <div><br></div>									
+                            {% for posteo in posteos %}
+                            <li>                                              
+                            <a href="{% url 'BlogPlantas:DetallePosteo' posteo.id %}">
+                                <i style="color: rgb(0, 0, 0);">{{posteo.titulo}}</i>
+                            </a> 
+                            {% if user.is_authenticated %}
+                            (
+                            <a href="{% url 'BlogPlantas:UpdatePosteo' posteo.id %}">
+                                <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            |
+                            <a href="{% url 'BlogPlantas:BorrarPosteo' posteo.id %}">
+                                <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                            </a>
+                            )
+                            {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+
+                        </h3>
+                        </ul>
+                        
+                        
+                        
+                        </h2>
+                        <h2 class="h4 font-weight-bold">
+                        <p style="color: red;">{{respuesta}}</p>
+                    </h2>
+                        
+                    </div>
+                    
+                    <div class="col-sm-6 hidden-xs">
+                        
+                        <section class="site-section section-newsletter text-center" >
+                            <div class="" style="margin-left: 100px; padding-right: 0px;">
+                                <h2>Buscador</h2>
+                                <form class="form-group newsletter-group" action="/BlogPlantas/buscar/" method="GET"> {% csrf_token %}
+                                    <input type="text" class="form-control" placeholder="Busqueda en todo el sitio" required, name= "busqueda", id= "busqueda">
+                                    
+                                    <button class="btn btn-green" type="submit">Buscar</button>
+                                </form><!-- /.newsletter-group -->
+                            </div>
+                        </section><!-- /.section-newsletter -->
+                    </div>
+                </div>
+            </div>
+                
+
+        </section>
+        {% else %}
+        <section class="text-center" style="padding-top: 100px;" >
+          
+        </section><!-- /.section-newsletter -->
+
+
+        {% endif %}
+
+      
+    </main><!-- /#main -->
+
+    {% endblock %}

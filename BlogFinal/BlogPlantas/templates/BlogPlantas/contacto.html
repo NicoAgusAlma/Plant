@@ -1,0 +1,42 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Información de contacto:</h2>
+                        
+                        <br>             
+                        <h4>Autor de la web: Nicolás Almazán</h4>
+                        <h4>Mail: nicoagusalma@gmail.com</h4>
+                        <h4>Telefono: 11 6859 8603</h4>
+                        <h4>GitHub: https://github.com/NicoAgusAlma</h4>
+                        <br>
+                        <br>
+                        <div style="text-decoration-line: underline;">
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        {% if '.' in planta.imagen.url %}
+                        <img src="{{planta.imagen.url}}" style="margin-top: 100px;" > 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+ 
+
+    </main><!-- /#main -->
+
+    {% endblock %}

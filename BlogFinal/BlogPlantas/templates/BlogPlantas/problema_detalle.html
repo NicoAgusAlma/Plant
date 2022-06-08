@@ -1,0 +1,39 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Informacion: {{problema.nombreProblema}}</h2>
+                        
+                        <br>   
+                        <p><h3>Nombre cientifico: {{problema.nombreCientifico}}</h3></p>
+                        <p><h3>Peligro: {{problema.peligro}}</h3></p>
+                        <p><h3>Productos recomendados para tratarlo: {{problema.productos}}</h3></p>
+                        <p><h3>Forma de tratarlo: {{problema.solucion}}</h3></p>
+                        <br>
+                        <div style="text-decoration-line: underline;" class="subpage-hero">
+                        <h3><a href="{% url 'BlogPlantas:ListaProblemas' %}" >Listado de problemas</a></h3> 
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div>
+                                        
+                                        
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        {% if '.' in problema.imagen.url %}
+                        <img src="{{problema.imagen.url}}" style="margin-top: 100px;" > 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ 
+    </main><!-- /#main -->
+
+    {% endblock %}

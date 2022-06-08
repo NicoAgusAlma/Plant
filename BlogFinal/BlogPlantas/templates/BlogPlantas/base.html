@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Agency Perfect</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Favicon
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'BlogPlantas/assets/img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'BlogPlantas/assets/img/favicon.png' %}">
+
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'BlogPlantas/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'BlogPlantas/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'BlogPlantas/assets/css/responsive.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a class="site-title" href="{% url 'BlogPlantas:Inicio' %}"><span>Blog</span>Plantas</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        
+                        <li><a href="{% url 'BlogPlantas:ListaPlantas' %}">Plantas</a></li>
+                        <li><a href="{% url 'BlogPlantas:ListaViveros' %}">Viveros</a></li>
+                        <li><a href="{% url 'BlogPlantas:ListaProblemas' %}">Problemas comunes</a></li>
+                        <li><a href="{% url 'BlogPlantas:ListaProductos' %}">Productos</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="{% url 'BlogPlantas:ListaPosteos' %}">Posteos</a></li>
+                              {% if user.is_authenticated %}
+                              <li><a href="{% url 'BlogPlantas:AgregarPosteo' %}">Nuevo posteo</a></li>
+                              {% endif %}
+                            </ul>
+
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'BlogPlantas:Logout' %}">Cerrar sesion</a></li>
+                        {% else %}
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sesion<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="{% url 'BlogPlantas:Login' %}">Iniciar sesion</a></li>
+                              <li><a href="{% url 'BlogPlantas:Login' %}">Registrarse</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    {% block contenidoQueCambia %}
+
+    {% endblock %}  
+    
+    <section class="site-section section-newsletter text-center gray-bg2">
+        <div class="container">
+            <h2>Buscador</h2>
+            <form class="form-group newsletter-group" action="/BlogPlantas/buscar/" method="GET"> {% csrf_token %}
+                <input type="text" class="form-control" placeholder="Busqueda en todo el sitio" required, name= "busqueda", id= "busqueda">
+                
+                <button class="btn btn-green" type="submit">Buscar</button>
+            </form><!-- /.newsletter-group -->
+        </div>
+    </section><!-- /.section-newsletter -->
+
+    <section class="site-section section-portfolio" style="padding-top: 50px;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="heading-separator">Secciones</h2>
+                <p class="subheading-text">Nuestras secciones más importantes</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/planta2.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Plantas</h4>
+                        <a href="{% url 'BlogPlantas:ListaPlantas' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/portfolio-2.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Blog</h4>
+                        <a href="{% url 'BlogPlantas:ListaPosteos' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/vivero2.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Viveros</h4>
+                        <a href="{% url 'BlogPlantas:ListaViveros' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/tools.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Productos</h4>
+                        <a href="{% url 'BlogPlantas:ListaProductos' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/enferma.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Problemas y Soluciones</h4>
+                        <a href="{% url 'BlogPlantas:ListaProblemas' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/galeria.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Galeria</h4>
+                        <a href="{% url 'BlogPlantas:Galeria' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/buscador.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Buscador</h4>
+                        <a href="{% url 'BlogPlantas:Buscador' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img src="{% static 'BlogPlantas/assets/img/contacto.jpg' %}" class="img-res" alt="">
+                        <h4 class="portfolio-item-title">Contacto</h4>
+                        <a href="{% url 'BlogPlantas:Buscador' %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div><!-- /.portfolio-item -->
+                </div>
+            </div>
+        </div>
+    </section><!-- /.section-portfolio -->
+
+</main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title"><span>Blog</span>Plantas</a>
+                    <p>Somos una empresa dedicada al bienestar y cuidado de la naturaleza.</p>
+                    <p>Medimos nuestro exito por las respuestas y conformidad de nuestros clientes.</p>
+                </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <h3>Info de contacto</h3>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@agencyperfect.com">nicoagusalma@gmail.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+541168598603">+54 (11) 6859 8603 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+541168598603">+54 (11) 6859 8603</a></li>
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="https://www.google.com.ar/maps/place/Almte.+Brown+320,+Quilmes,+Provincia+de+Buenos+Aires/@-34.7169478,-58.2618472,17z/data=!3m1!4b1!4m5!3m4!1s0x95a32e15dac12ac7:0x151879e3b3704a11!8m2!3d-34.7169522!4d-58.2596585">Brown 320, Quilmes</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Links importantes</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'BlogPlantas:Inicio' %}">Home</a></li>
+                        <li><a href="{% url 'BlogPlantas:ListaPosteos' %}">Blog</a></li>
+                        <li><a href="{% url 'BlogPlantas:Galeria' %}">Imagenes</a></li>
+                        <li><a href="{% url 'BlogPlantas:Contacto' %}">Contacto</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <a class="twitter-bg" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook-bg" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a>
+                            <a class="linkedin-bg" href="#"><i class="fa fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p>&copy; BlogPlantas</p>
+                            <p>Todos los derechos reservados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/jquery.countTo.min.js' %}"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/jquery.shuffle.min.js' %}"></script>
+    <script src="{% static 'BlogPlantas/assets/assets/js/script.js' %}"></script>
+  
+</body>
+</html>

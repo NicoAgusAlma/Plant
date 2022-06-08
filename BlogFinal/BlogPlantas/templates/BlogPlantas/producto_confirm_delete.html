@@ -1,0 +1,37 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Eliminar producto:</h2>
+                        
+                        <br>
+                        <form method="post">{% csrf_token %}
+
+                            <h3>Esta seguro de querer eliminar "{{object.nombre}}"?</h3>
+                            <br>
+                            <br>
+                            <input type="submit" value="Eliminar">
+                            <a href="{% url 'BlogPlantas:ListaProductos' %}">Volver</a>
+
+                        </form>       
+                    
+                    </div>
+                    <div class="col-sm-7 hidden-xs">
+                        <img src="{% static 'BlogPlantas/assets/img/productos.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+
+    </main><!-- /#main -->
+
+    {% endblock %}

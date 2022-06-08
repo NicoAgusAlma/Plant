@@ -1,0 +1,58 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Todos los productos:</h2>
+                        
+                        <br>
+                        <ul> <h3>
+                        
+                        {% for producto in object_list %}
+
+                            <li> 
+                            
+                                <a href="{% url 'BlogPlantas:DetalleProducto' producto.id %}">
+                                    <i style="color: rgb(0, 0, 0);">{{producto.nombre}}</i>
+                                </a>
+                                {% if user.is_authenticated %}
+                                (
+                                <a href="{% url 'BlogPlantas:UpdateProducto' producto.id %}">
+                                    <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                                </a>
+                                |
+                                <a href="{% url 'BlogPlantas:BorrarProducto' producto.id %}">
+                                    <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                                </a>
+                                )
+                                {% endif %}
+                            </li><br>
+                        {% endfor %}
+                        {% if user.is_authenticated %}
+                        </h3></ul>
+                        <div style="text-decoration-line: underline;">
+                            <h3><a href="{% url 'BlogPlantas:AgregarProducto' %}" >Nuevo producto</a></h3>                         
+                            </div>
+                            {% endif %}
+                    
+                    
+                    
+                    </div>
+                    <div class="col-sm-7 hidden-xs">
+                        <img src="{% static 'BlogPlantas/assets/img/productos.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+
+    </main><!-- /#main -->
+
+    {% endblock %}

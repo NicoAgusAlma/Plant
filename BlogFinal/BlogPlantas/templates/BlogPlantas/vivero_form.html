@@ -1,0 +1,31 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Datos vivero:</h2>
+                        
+                        <br>
+                        <form method="post">{%csrf_token%}
+                            {{ form.as_p }}
+                            <input type="submit" value="Enviar"/>   
+                    
+                        </form>
+                        <a href="{% url 'BlogPlantas:ListaViveros' %}">Volver</a>
+                    </div>
+                    <div class="col-sm-7 hidden-xs">
+                        <img src="{% static 'BlogPlantas/assets/img/vivero.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- /#main -->
+
+    {% endblock %}

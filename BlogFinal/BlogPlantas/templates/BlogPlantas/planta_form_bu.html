@@ -1,0 +1,98 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Datos de la planta:</h2>
+                        
+                        <br>
+                        <form method="post">{%csrf_token%}
+                            {{ form.as_p }}
+                            <input type="submit" value="Enviar"/>                             
+                        </form>
+                        <a href="{% url 'BlogPlantas:ListaPlantas' %}">Volver</a>
+                    </div>
+                    <div class="col-sm-7 hidden-xs">
+                        <img src="{% static 'BlogPlantas/assets/img/ipad-pro.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator2">Todos los viveros:</h2>
+                    <p class="subheading-text">Nuestras secciones más importantes</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-1.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Plantas</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-2.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Blog</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-3.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Viveros</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-4.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Productos</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-5.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Problemas y Soluciones</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-6.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Imagenes</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-1.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Buscador</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-2.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Contacto</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+
+    </main><!-- /#main -->
+
+    {% endblock %}

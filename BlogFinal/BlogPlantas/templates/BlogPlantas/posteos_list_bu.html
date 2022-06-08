@@ -1,0 +1,134 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section text-center">
+                 
+            <h2>Blog</h2>
+                        
+            <br>     
+            {% for posteo in object_list %}
+
+                
+                   
+                        
+                        <h2 style="margin-bottom: 0px; padding-bottom: 10px;">
+                            {{posteo.titulo}}
+                        </h2>
+                        <h3 style="margin-top: 0px;">
+                            {{posteo.subtitulo}}
+                        </h3>
+                        
+                            <div class="hero-content" style="position: center;">
+                            {% if '.' in posteo.imagen.url %}
+                            <img src="{{posteo.imagen.url}}" style="margin-top: 100px; max-width: 900px;" > 
+                            {% endif %}
+                        </div>
+                        
+                        <h4 style="margin-top: 0px; text-align: left; padding: 150px; padding-top: 0px; padding-bottom: 10px; ">
+                            {{posteo.texto}}                            
+                        </h4>
+                        <div class="text-left">
+                            <h4 style="margin-top: 0px; padding: 150px; padding-top: 0px; padding-bottom: 10px; ">
+                                {{posteo.fecha}}
+                            </h4>
+                        </div>
+                        <div class="text-right">
+                            <h4 style="margin-top: 20px; text-decoration-line: underline; padding: 150px; padding-top: 0px; padding-bottom: 10px; ">
+                                {{posteo.autor}}
+                            </h4>
+                        <hr>
+                        </div>
+                        (
+                        <a href="{% url 'BlogPlantas:UpdatePosteo' posteo.id %}">
+                            <i class="fa fa-pencil" style="color: rgb(0, 0, 0);"> </i>
+                        </a>
+                        |
+                        <a href="{% url 'BlogPlantas:BorrarPosteo' posteo.id %}">
+                            <i class="fa fa-trash" style="color: rgb(0, 0, 0);"> </i>
+                        </a>
+                        )
+                        
+                    
+                    <br>
+                
+            {% endfor %}
+                        
+        <a href="{% url 'BlogPlantas:AgregarPosteo' %}">Nuevo posteo</a>
+    
+        </section>
+
+        <section class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator2">Otra cosa:</h2>
+                    <p class="subheading-text">Nuestras secciones más importantes</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-1.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Plantas</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-2.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Blog</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-3.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Viveros</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-4.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Productos</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-5.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Problemas y Soluciones</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-6.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Imagenes</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-1.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Buscador</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{% static 'BlogPlantas/assets/img/portfolio-2.jpg' %}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">Contacto</h4>
+                            <a href="portfolio-item.html"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+
+    </main><!-- /#main -->
+
+    {% endblock %}

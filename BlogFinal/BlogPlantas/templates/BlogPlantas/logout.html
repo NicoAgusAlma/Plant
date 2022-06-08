@@ -1,0 +1,28 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator2">Sesion cerrada</h2>
+                    
+                    <h3>
+                        Usted ha cerrado correctamente su sesion.
+                        <br>
+                        <br>
+                    </h3>
+
+                    <h2><a href="{% url 'BlogPlantas:Inicio' %}">Home</a></h2> 
+
+            </div>
+
+        </section><!-- /.section-portfolio -->
+
+
+    </main><!-- /#main -->
+
+    {% endblock %}

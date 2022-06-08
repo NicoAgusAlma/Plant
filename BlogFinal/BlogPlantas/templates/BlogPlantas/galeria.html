@@ -1,0 +1,34 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-portfolio" style="padding-top: 150px;">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator">Galeria</h2>
+                    <p class="subheading-text">Ingrese en cada una para ver sus detalles.</p>
+                </div>
+                <div class="row">
+                    {% for planta in object_list %}
+                    {% if '.' in planta.imagen.url %}
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="{{planta.imagen.url}}" class="img-res" alt="">
+                            <h4 class="portfolio-item-title">{{planta.nombreComun}}</h4>
+                            <a href="{% url 'BlogPlantas:DetallePlanta' planta.id %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+ 
+
+    </main><!-- /#main -->
+
+    {% endblock %}

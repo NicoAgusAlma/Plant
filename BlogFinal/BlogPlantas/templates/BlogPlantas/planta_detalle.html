@@ -1,0 +1,58 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Informacion: {{planta.nombreComun}}</h2>
+                        
+                        <br>             
+                        <h4>Nombre cientifico: {{planta.nombreCientifico}}</h4>
+                        <h4>Familia de plantas: {{planta.familia}}</h4>
+                        <h4>Tierra recomendada: {{planta.sustrato}}</h4>
+                        <h4>Valor promedio U$s: {{planta.precio}}</h4>
+                        <h4>Viveros donde entontrarla: {{planta.viveros}}</h4>
+                        <h4>Problemas usuales: {{planta.peligrosComunes}}</h4>
+                        {% if planta.interior == True %}
+                        <h4>Es de interior?: Si</h4>
+                        {% else %}
+                        <h4>Es de interior?: No</h4>
+                        {% endif %}
+                        {% if planta.luzDirecta == True %}
+                        <h4>Nececita luz solar directa?: Si</h4>
+                        {% else %}
+                        <h4>Nececita luz solar directa?: No</h4>
+                        {% endif %}                                               
+                        <h4>Riegos mensuales: {{planta.frecuenciaRiego}}</h4>
+                        <br>
+                        <h4>Descripción:</h4>
+                        <h4>{{planta.descripcion}}</h4>
+                        <br>
+                        <br>
+                        <div style="text-decoration-line: underline;" class="subpage-hero">
+                        <h3><a href="{% url 'BlogPlantas:ListaPlantas' %}" >Listado de plantas</a></h3> 
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div>
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        {% if '.' in planta.imagen.url %}
+                        <img src="{{planta.imagen.url}}" style="margin-top: 100px;" > 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+ 
+
+    </main><!-- /#main -->
+
+    {% endblock %}

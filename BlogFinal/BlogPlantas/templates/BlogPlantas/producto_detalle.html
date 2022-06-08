@@ -1,0 +1,38 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Informacion: {{producto.nombre}}</h2>
+                        
+                        <br>   
+                        <p><h3>Valor promedio U$s: {{producto.precio}}</h3></p>
+                        <p><h3>Viveros donde entontrarla: {{producto.puntoDeVenta}}</h3></p>
+                        <p><h3>Problemas que soluciona: {{producto.solucionaProblemas}}</h3></p>
+                        <br>
+                        <div style="text-decoration-line: underline;" class="subpage-hero">
+                        <h3><a href="{% url 'BlogPlantas:ListaProductos' %}" >Listado de productos</a></h3> 
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div>              
+                                        
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        {% if '.' in producto.imagen.url %}
+                        <img src="{{producto.imagen.url}}" style="margin-top: 100px;" > 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+
+    </main><!-- /#main -->
+
+    {% endblock %}

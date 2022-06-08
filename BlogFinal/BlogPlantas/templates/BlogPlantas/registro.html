@@ -1,0 +1,26 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator2">Registro</h2>
+                    
+                </div>
+               <form action="" method="POST">{% csrf_token %}
+
+                {{ form.as_p }}
+                <button type="submit">Registrarse</button>
+
+               </form>
+
+        </section><!-- /.section-portfolio -->
+
+
+    </main><!-- /#main -->
+
+    {% endblock %}

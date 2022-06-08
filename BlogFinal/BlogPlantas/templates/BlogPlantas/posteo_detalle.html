@@ -1,0 +1,52 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>{{posteo.titulo}}</h2>
+                        
+                        <br>   
+                        <p><h4>{{posteo.subtitulo}}</h4></p>
+                        <p>{{posteo.fecha}}</p>
+                        <p>{{posteo.texto}}</p> 
+                        <p><h4>{{posteo.autor}}</h4></p>
+                        <br>
+                        {% if user.is_authenticated %}
+                            <h3>
+                                (
+                                <a href="{% url 'BlogPlantas:UpdatePosteo' posteo.id %}">
+                                    <i style="color: rgb(0, 0, 0);"> Editar </i>
+                                </a>
+                                |
+                                <a href="{% url 'BlogPlantas:BorrarPosteo' posteo.id %}">
+                                    <i style="color: rgb(0, 0, 0);"> Eliminar </i>
+                                </a>
+                                )
+                            </h3>
+                            <br>
+                        {% endif %}
+                        <div style="text-decoration-line: underline;" class="subpage-hero">
+                        <h3><a href="{% url 'BlogPlantas:ListaPosteos' %}" >Blog</a></h3> 
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div> 
+                                                    
+                    </div>
+                   
+
+                    <div class="" style="margin-top: 150px; ">
+                        <img src="{{posteo.imagen.url}}" alt="" style="max-width: 700px;  margin-right: 200px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ 
+    </main><!-- /#main -->
+
+    {% endblock %}

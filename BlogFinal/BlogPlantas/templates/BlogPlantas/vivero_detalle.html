@@ -1,0 +1,39 @@
+{% extends 'BlogPlantas/base.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <main id="main" class="site-main">
+        
+
+        <section class="site-section section-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Informacion del vivero:</h2>
+                        
+                        <br>
+                        
+                        <p><h3>{{vivero.nombre}}</h3></p>
+                        <p><h3>{{vivero.provincia}}, {{vivero.localidad}}</h3></p>
+                        <p><h3>{{vivero.calle}} {{vivero.altura}}</h3></p>
+                        <p><h3>Telefono: {{vivero.telefono}}</h3></p>
+                        <br>
+                        <div style="text-decoration-line: underline;" class="subpage-hero">
+                        <h3><a href="{% url 'BlogPlantas:ListaViveros' %}" >Listado de viveros</a></h3> 
+                        <h3><a onclick="history.back()">Volver</a></h3>  
+                        </div> 
+                                       
+                                        
+                    </div>
+                    <div class="col-sm-6 hidden-xs">
+                        {% if '.' in vivero.imagen.url %}
+                        <img src="{{vivero.imagen.url}}" style="margin-top: 100px;" > 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- /#main -->
+
+    {% endblock %}
